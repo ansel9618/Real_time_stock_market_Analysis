@@ -48,11 +48,11 @@ next write consumer code in another jupyter notebook and check working
 
 ## step4:
 
-create a python script to simulate stock api using dataset provided and randomly pick data,loop and feed it to producer
-we can see that the data is generated
+create a python script to simulate stock api using dataset provided and randomly pick data,loop and feed it to producer we can see that the data is generated
+
 while checking the randomly genereated data in producer and consumer in terminal, make sure that
-you run only for few seconds since we have a EC2 server with low resource thus terminate immediately
-else zookeeper,server,producer and consumer will shut down.
+you run only for few seconds since we have a EC2 server with low resource 1 node and 1 broker thus terminate immediately 
+else zookeeper,server,producer and consumer will shut down/stop.
 incase of shut down restart  zookeeper,server,producer and consumer 
 
 ![My Image](https://github.com/ansel9618/Real_time_stock_market_Analysis/blob/main/images/p4_checking_python%20data%20genereated_in_kafka.png)
