@@ -15,3 +15,24 @@ and the querying part will be done by AWS Sthena
 
 
 ![My Image](https://github.com/ansel9618/Real_time_stock_market_Analysis/blob/main/images/Architecture.jpg)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREDITS : Ths real time project was done with the help of DARSHIL PARMAR 
+          His Youtube channel :-- https://www.youtube.com/@DarshilParmar
