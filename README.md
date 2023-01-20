@@ -94,19 +94,20 @@ after IAM role is set for glue create a database
 after creating databse add it to crawler and run
 then use aws athena to query through the table created from database
 
-![My Image](https://github.com/ansel9618/Real_time_stock_market_Analysis/blob/main/images/p7_glue_crawler.png)
+![My Image](https://github.com/ansel9618/Real_time_stock_market_Analysis/blob/main/images/p8_querying_in_athena.png)
 
+## step 10:
 
 now inorder to make it streaming we can set a sleep(1) to create a delay so as to not make server crash in the kafka producercode in jupyter
 and run again to see data getting streamed into the s3 and we can verify using athena.
 
+![My Image](https://github.com/ansel9618/Real_time_stock_market_Analysis/blob/main/images/p9_live_streaming1.png)
 
+![My Image](https://github.com/ansel9618/Real_time_stock_market_Analysis/blob/main/images/p10_live_streaming2.png)
 
+![My Image](https://github.com/ansel9618/Real_time_stock_market_Analysis/blob/main/images/p11_live_streaming3.png)
 
-
-
-
-
+we can see records changing while checking count since we are streaming data into s3 from kafka using s3
 
 
 
