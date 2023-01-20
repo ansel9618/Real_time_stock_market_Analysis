@@ -17,6 +17,13 @@ and the querying part will be done by AWS Sthena
 ![My Image](https://github.com/ansel9618/Real_time_stock_market_Analysis/blob/main/images/Architecture.jpg)
 
 
+## Prerequisites:
+
+Knowledge in python,kafka,glue,athena,sql,s3,EC2
+aws account 
+
+
+
 ## step1:
 
 Spin up a Ec2 instance using your AWs acoount use free tier T2.micro so that charges are not incurred
