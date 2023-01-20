@@ -17,16 +17,38 @@ and the querying part will be done by AWS Sthena
 ![My Image](https://github.com/ansel9618/Real_time_stock_market_Analysis/blob/main/images/Architecture.jpg)
 
 
+## step1:
 
+Spin up a Ec2 instance using your AWs acoount use free tier T2.micro so that charges are not incurred
+login using ssh credentials
+also if there is an permission error type chmod ".pem file" --> to allow permission
 
+## step2:
 
+Install Kafka in EC2 machine using the steps mentioned in file 
+[kafka_installation_EC2](https://github.com/ansel9618/Real_time_stock_market_Analysis/blob/main/kafka_installation_EC2)
+after installing and launch zookeeper,server, create topic,producer and consumer and verify working.
+Note:follow all steps in above mentioned file!!
 
+## step3:
+Install kafka in jupyter notebook and create python producer adn cross check working in terminal where we created the producer
 
+![My Image](https://github.com/ansel9618/Real_time_stock_market_Analysis/blob/main/images/p2_checking_producer_working.png)
 
+next write consumer code in another jupyter notebook and check working
 
+![My Image](https://github.com/ansel9618/Real_time_stock_market_Analysis/blob/main/images/p3_checking_producer_consumer_working.png)
 
+## step4:
 
+create a python script to simulate stock api using dataset provided and randomly pick data,loop and feed it to producer
+we can see that the data is generated
+while checking the randomly genereated data in producer and consumer in terminal, make sure that
+you run only for few seconds since we have a EC2 server with low resource thus terminate immediately
+else zookeeper,server,producer and consumer will shut down.
+incase of shut down restart  zookeeper,server,producer and consumer 
 
+![My Image](https://github.com/ansel9618/Real_time_stock_market_Analysis/blob/main/images/p4_checking_python%20data%20genereated_in_kafka.png)
 
 
 
