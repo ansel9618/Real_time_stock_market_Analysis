@@ -57,11 +57,31 @@ incase of shut down restart  zookeeper,server,producer and consumer
 
 ![My Image](https://github.com/ansel9618/Real_time_stock_market_Analysis/blob/main/images/p4_checking_python%20data%20genereated_in_kafka.png)
 
+## step 6:
+
+Now we need to create an s3 bucket and upload the data generated in consumer to s3
+for this we need to install a package called s3fs
+also need to configure aws
+
+go to IAM create a user and create access key for cli usage
+and dowload the credentials as a csv file and do not share crdentials
 
 
+for configuring aws we need to  install aws cli in your system
+https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html#cliv2-linux-install
+
+configure aws in terminal using 'aws configure' now u are all set
 
 
+## step 7:
 
+sample o/p for the logic and server working confirmation
+
+![My Image](https://github.com/ansel9618/Real_time_stock_market_Analysis/blob/main/images/p5_check_records.png)
+
+running consumer first then producer and refreshing s3 bucket which dumps records in json format
+
+![My Image](https://github.com/ansel9618/Real_time_stock_market_Analysis/blob/main/images/p6_running_producer_consumer_5sec_inserting_s3.png)
 
 CREDITS : Ths real time project was done with the help of DARSHIL PARMAR 
           His Youtube channel :-- https://www.youtube.com/@DarshilParmar
