@@ -1,0 +1,90 @@
+
+Launch EC2 Instance and store key pair file in system(use free tier t2.micro)
+and use the ssh client code to connect to EC2 via local system
+
+if the key pair does not work 
+give permission  by using 
+
+chmod 400 'key-pair'
+
+and then run the ssh command
+
+ssh -i "kafka-stock-market-project.pem" ec2-user@ec2-43-204-25-108.ap-south-1.compute.amazonaws.com
+
+Download the apache kafka file in AWs EC2:
+--------------------------------------------
+wget https://downloads.apache.org/kafka/3.3.1/kafka_2.12-3.3.1.tgz
+
+Unzip the file:
+---------------
+tar -xvf kafka_2.12-3.3.1.tgz
+
+Installing java 1.8 and chceking the version
+----------------------------------------------
+java -version
+sudo yum install java-1.8.0-openjdk
+java -version
+cd kafka_2.12-3.3.1
+
+
+Start Zoo-keeper:
+-------------------------------
+bin/zookeeper-server-start.sh config/zookeeper.properties
+
+
+Start Kafka-server:
+----------------------------------------
+Duplicate the session/terminal & enter in a new console --
+
+this command assigns some memory to kafka since its running in a single EC2 machine
+
+export KAFKA_HEAP_OPTS="-Xmx256M -Xms128M" **-->
+
+
+cd kafka_2.12-3.3.1
+bin/kafka-server-start.sh config/server.properties
+
+It is pointing to private server , change server.properties so that it can run in public IP 
+
+To do this , you can follow any of the 2 approaches shared belwo --
+Do a "sudo nano config/server.properties" - change ADVERTISED_LISTENERS to public ip of the EC2 instance
+
+                                      public ip-address of ec2
+eg: advertised.listeners=PLAINTEXT://43.204.25.108:9092
+
+
+also we need to edit the inbound rules of the ec2 instance
+where type --> all_traffic
+and source -->anywhere-IPv4
+
+Note:this is not a secure way allowing all traffic and this is usually configured by devops
+
+Create the topic:
+-----------------------------
+Duplicate the session & enter in a new console --
+cd kafka_2.12-3.3.1
+bin/kafka-topics.sh --create --topic demo_testing2 --bootstrap-server {Put the Public IP of your EC2 Instance:9092} --replication-factor 1 --partitions 1
+
+Start Producer:
+--------------------------
+bin/kafka-console-producer.sh --topic demo_testing2 --bootstrap-server {Put the Public IP of your EC2 Instance:9092} 
+
+Start Consumer:
+-------------------------
+Duplicate the session & enter in a new console --
+cd kafka_2.12-3.3.1
+bin/kafka-console-consumer.sh --topic demo_testing2 --bootstrap-server {Put the Public IP of your EC2 Instance:9092}
+
+
+
+#make sure that the topic name is same for producer and consumer
+eg:--
+
+bin/kafka-topics.sh --create --topic demo_test2 --bootstrap-server 43.204.25.108:9092 --replication-factor 1 --partitions 1
+
+
+bin/kafka-console-producer.sh --topic demo_test2 --bootstrap-server 43.204.25.108:9092
+
+
+bin/kafka-console-consumer.sh --topic demo_test2 --bootstrap-server 43.204.25.108:9092
+
