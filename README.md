@@ -80,5 +80,35 @@ running consumer first then producer and refreshing s3 bucket which dumps record
 
 ![My Image](https://github.com/ansel9618/Real_time_stock_market_Analysis/blob/main/images/p6_running_producer_consumer_5sec_inserting_s3.png)
 
+## step 8:
+
+once data is in s3 we'll crawl using glue crawler the entire schema from our s3 files and query on top of it using athena.
+create crawler and add s3 path also create IAM role for glue to access s3 bucket.
+select glue and give admin access which gives full access to aws services and resources.
+
+![My Image](https://github.com/ansel9618/Real_time_stock_market_Analysis/blob/main/images/p7_glue_crawler.png)
+
+## step 9:
+
+after IAM role is set for glue create a database
+after creating databse add it to crawler and run
+then use aws athena to query through the table created from database
+
+![My Image](https://github.com/ansel9618/Real_time_stock_market_Analysis/blob/main/images/p7_glue_crawler.png)
+
+
+now inorder to make it streaming we can set a sleep(1) to create a delay so as to not make server crash in the kafka producercode in jupyter
+and run again to see data getting streamed into the s3 and we can verify using athena.
+
+
+
+
+
+
+
+
+
+
+
 CREDITS : Ths real time project was done with the help of DARSHIL PARMAR 
           His Youtube channel :-- https://www.youtube.com/@DarshilParmar
